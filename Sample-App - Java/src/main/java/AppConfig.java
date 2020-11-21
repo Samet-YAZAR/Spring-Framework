@@ -10,26 +10,26 @@ public class AppConfig {
     //configure Annotations.
     //@Configuration
 
-        @Bean(name="speakerService")
-        public SpeakerService getSpeakerService(){
-            SpeakerServiceImpl service = new SpeakerServiceImpl();
-            service.setRepository(getSpeakerRepository());
-            return service;
-        }
+    @Bean(name = "speakerService")
+    public SpeakerService getSpeakerService() {
+        // service.setRepository(getSpeakerRepository());
+        return new SpeakerServiceImpl(getSpeakerRepository());
+    }
 
-        @Bean(name="speakerRepository")
-        public SpeakerRepository getSpeakerRepository(){
-            return new HibernateSpeakerRepositoryImpl();
-        }
-    } // bu altli ustlu yapiya Setter injection Diyoruz.
-
+    @Bean(name = "speakerRepository")
+    public SpeakerRepository getSpeakerRepository() {
+        return new HibernateSpeakerRepositoryImpl();
+    }
+}
+// bu altli ustlu yapiya Setter injection Diyoruz.
+//likely setter injection, in constructor injection, we just assing service through the
+//way of constructior.l
 
 
 
 /*
-* simdi dusunelim, repository paketi altinda bir speakerRepo var ama onu implement eden
-* 10 class olsun, bu 10 farkli Dependancy injection anlamina gelir, bu cok istedigimi
-* bir sey degil, aynisii service icinde dusunelim.
-* Biz burada sub classta service olarak reponun interfaceini field olarak kullanip setterini yazdik.
-*
-* */
+ * simdi dusunelim, repository paketi altinda bir speakerRepo var ama onu implement eden
+ * 10 class olsun, bu 10 farkli Dependancy injection anlamina gelir, bu cok istedigimi
+ * bir sey degil, aynisii service icinde dusunelim.
+ * Biz burada sub classta service olarak reponun interfaceini field olarak kullanip setterini yazdik.
+ * */
