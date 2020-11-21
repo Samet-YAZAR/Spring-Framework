@@ -13,7 +13,7 @@ public class AppConfig {
     //@Configuration
 
     @Bean(name = "speakerService")
-    @Scope(value = BeanDefinition.SCOPE_SINGLETON)
+    @Scope(value = BeanDefinition.SCOPE_PROTOTYPE)
     public SpeakerService getSpeakerService() {
         // service.setRepository(getSpeakerRepository());
         return new SpeakerServiceImpl(getSpeakerRepository());
