@@ -2,6 +2,7 @@ package com.pluralsight.repository;
 
 import com.pluralsight.model.Speaker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +16,9 @@ public class HibernateSpeakerRepositoryImpl implements SpeakerRepository {
     @Autowired
     private Calendar cal;
 
+    @Value("#{ T(java.lang.Math).random() * 100 }")
+    private double seedNum;
+
     public List<Speaker> findAll(){
         List<Speaker> speakers = new ArrayList<Speaker>();
 
@@ -22,6 +26,7 @@ public class HibernateSpeakerRepositoryImpl implements SpeakerRepository {
 
         speaker.setFirstname("Samet");
         speaker.setLastname("YAZAR");
+        speaker.setSeedNum(seedNum);
 
         System.out.println("cal :" + cal.getTime());
 
