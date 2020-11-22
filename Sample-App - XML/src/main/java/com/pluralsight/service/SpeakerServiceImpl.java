@@ -10,6 +10,13 @@ public class SpeakerServiceImpl implements SpeakerService {
     //Dependency injection HardCoded Style of Maven
     private SpeakerRepository repository;  // = new HibernateSpeakerRepositoryImpl();
 
+    public SpeakerServiceImpl() {
+    }
+
+    public SpeakerServiceImpl(SpeakerRepository repository) {
+        this.repository = repository;
+    }
+
     public void setSpeakerRepository(SpeakerRepository repository) {
         this.repository = repository;
     }
