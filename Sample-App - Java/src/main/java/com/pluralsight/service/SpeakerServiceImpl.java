@@ -22,6 +22,7 @@ public class SpeakerServiceImpl implements SpeakerService {
         System.out.println("SpeakerServiceImpl no arg constructor");
     }
 
+    @Autowired
     public SpeakerServiceImpl(SpeakerRepository repository) {
         System.out.println("SpeakerServiceImpl repository constructor");
         this.repository = repository;
@@ -31,7 +32,7 @@ public class SpeakerServiceImpl implements SpeakerService {
         return repository.findAll();
     }
 
-    @Autowired // bununla aslida injection saglanmis oldu. kaldirinca setter injectiona donmek lazim.
+     // bununla aslida injection saglanmis oldu. kaldirinca setter injectiona donmek lazim.
     public void setRepository(SpeakerRepository repository) {
         System.out.println("SpeakerServiceImpl setter constructor");
         this.repository = repository;
